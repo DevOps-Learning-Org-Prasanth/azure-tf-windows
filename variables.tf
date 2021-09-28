@@ -18,3 +18,15 @@ variable "subnet_space" {
   })
   description = "Address space and name for a subnet"
 }
+
+variable "username" {
+    type = string
+    description = "username of vm"
+    sensitive = true
+}
+
+variable "password" {
+    type = string
+    description = "password of vm"
+    sensitive = true
+}
