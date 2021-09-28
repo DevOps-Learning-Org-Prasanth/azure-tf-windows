@@ -1,7 +1,8 @@
 # Creation of windows vm
 
 ## Steps
-- create a resource group
-- vnet
-- subnet
-- vm
+- [x] create a resource group
+- [x] vnet
+- [x] subnet
+- [x] vm
+- [] bastion network
