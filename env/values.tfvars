@@ -12,6 +12,6 @@ subnet_space = [
   },
   {
     name : "subnet2",
-    adddress_prefix : "10.255.44.0/29"
+    address_prefix : "10.255.44.0/29"
   }
 ]
