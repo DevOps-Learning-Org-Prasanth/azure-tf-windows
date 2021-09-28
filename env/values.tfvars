@@ -9,5 +9,9 @@ subnet_space = [
   {
     name : "subnet1",
     address_prefix : "10.255.44.0/28"
+  },
+  {
+    name : "subnet2",
+    adddress_prefix : "10.255.44.0/29"
   }
 ]
