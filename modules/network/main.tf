@@ -6,7 +6,7 @@ resource "azurerm_virtual_network" "main" {
     resource_group_name = var.resource_group_name
     location = var.location
 
-    address_space = [var.vnet_space[addr_space]]
+    address_space = [var.vnet_space[address_space]]
     
     subnets {
         name = each.value.name
