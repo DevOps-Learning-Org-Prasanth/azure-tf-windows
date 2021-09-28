@@ -26,7 +26,7 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v1
         with:
-          terraform-version: 1.0.2
+          terraform_version: 1.0.2
 
       - uses: azure/login@v1
         with: 
@@ -39,7 +39,7 @@ jobs:
 
       - name: terraform apply
         id: apply
-        run: terraform apply -input=false -var-file=./env/values.tfvars -auto-approve
+        run: terraform apply -input=false -var-file=./env/values.tfvars -auto-approve -var "username=${{ secrets.VM_USERNAME }}" -var "password=${{secrets.VM_PASSWORD}}"
   
   Delete:
     name: windows_server_destroy
@@ -52,7 +52,7 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v1
         with:
-          terraform-version: 1.0.2
+          terraform_version: 1.0.2
 
       - uses: azure/login@v1
         with: 
