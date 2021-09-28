@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "main" {
     name = "Windows-Server-PG"
-    location = var.loc
+    location = var.location
 }
 
 module "network" {
