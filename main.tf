@@ -19,9 +19,13 @@ module "windows" {
 
   username = var.username
   password = var.password
-  
+
   subnet = {
     id   = module.network.subnet_id
     cidr = var.subnet_space.address_prefix
   }
+
+  depends_on = [
+    module.network
+  ]
 }
