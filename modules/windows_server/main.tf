@@ -1,7 +1,7 @@
 data "azurerm_subnet" "main" {
-  name                = var.subnet.name
-  location            = var.location
-  resource_group_name = var.resource_group_name
+  name                 = var.subnet.name
+  resource_group_name  = var.resource_group_name
+  virtual_network_name = var.vnet_name
 }
 
 resource "azurerm_network_interface" "main" {

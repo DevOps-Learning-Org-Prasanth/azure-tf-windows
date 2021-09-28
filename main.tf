@@ -24,7 +24,7 @@ module "windows" {
     name = var.subnet_space.name
     cidr = var.subnet_space.address_prefix
   }
-
+  vnet_name = var.vnet_space.name
   depends_on = [
     module.network
   ]
