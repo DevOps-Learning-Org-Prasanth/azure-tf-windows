@@ -8,8 +8,7 @@ resource "azurerm_virtual_network" "main" {
   address_space = [var.vnet_space.address_space]
 
   subnet {
-    for_each       = { for subnet in var.subnet_space : subnet.name => subnet.address_prefix }
-    name           = each.key
-    address_prefix = each.value
+    name           = var.subnet_space.name
+    address_prefix = var.subnet_space.address_prefix
   }
 }

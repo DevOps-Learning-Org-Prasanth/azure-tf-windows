@@ -5,13 +5,7 @@ vnet_space = {
   address_space : "10.255.44.0/24"
 }
 
-subnet_space = [
-  {
-    name : "subnet1",
-    address_prefix : "10.255.44.0/28"
-  },
-  {
-    name : "subnet2",
-    address_prefix : "10.255.44.0/29"
-  }
-]
+subnet_space = {
+  name : "subnet1",
+  address_prefix : "10.255.44.0/28"
+}

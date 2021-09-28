@@ -17,9 +17,9 @@ variable "vnet_space" {
 }
 
 variable "subnet_space" {
-  type = list(object({
+  type = object({
     name           = string
     address_prefix = string
-  }))
+  })
   description = "Address space and name for a subnet"
 }
