@@ -9,7 +9,7 @@ resource "azurerm_virtual_network" "main" {
   address_space = [var.vnet_space.address_space]
 
   subnet {
-    name           = each.value.name
-    address_prefix = each.value.address_prefix
+    name           = each.key
+    address_prefix = each.value
   }
 }
