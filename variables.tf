@@ -20,13 +20,13 @@ variable "subnet_space" {
 }
 
 variable "username" {
-    type = string
-    description = "username of vm"
-    sensitive = true
+  type        = string
+  description = "username of vm"
+  sensitive   = true
 }
 
 variable "password" {
-    type = string
-    description = "password of vm"
-    sensitive = true
+  type        = string
+  description = "password of vm"
+  sensitive   = true
 }
