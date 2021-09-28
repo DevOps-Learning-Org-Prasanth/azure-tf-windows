@@ -54,7 +54,7 @@ jobs:
       
       - name: lint modules
         run: |
-          for m in (ls -1d modules/*/)
+          for m in $(ls -1d modules/*/)
           do
             tflint -f compact
           done
