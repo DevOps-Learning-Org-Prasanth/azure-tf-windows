@@ -61,4 +61,4 @@ jobs:
       
       - name: terraform plan
         id: plan
-        run: terraform plan -refresh=true -input=false -var-file=env/values.tfvars
+        run: terraform plan -refresh=true -input=false -var-file=env/values.tfvars -var "username=${{ secrets.VM_USERNAME }}" -var "password=${{secrets.VM_PASSWORD}}"
