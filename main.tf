@@ -12,6 +12,6 @@ module "network" {
     subnet_space = var.subnet_space
 }
 
-module "windows" {
-    source = "./modules/windows_server"
-}
+# module "windows" {
+    # source = "./modules/windows_server"
+# }
