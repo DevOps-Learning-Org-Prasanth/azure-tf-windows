@@ -19,46 +19,46 @@ jobs:
     name: windows_server_plan
     runs-on: ubuntu-latest
   
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    
-    - uses: hashicorp/setup-terraform@v1
-      with:
-        terraform-version: 1.0.2
-    
-    - uses: azure/login@v1
-      with: 
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: terraform init
-      id: init
-      working-directory: ./
-      run: terraform init -input=false
-    
-    - name: terraform fmt
-      id: fmt
-      run: terraform fmt -check
-      continue-on-error: true
-    
-    - uses: terraform-linters/setup-tflint@v1.1.0
-      with:
-        tflint_version: latest
-    
-    - name: tflint init
-      id: tflint_init
-      run: tflint --init
-    
-    - name: run tflint
-      run: tflint -f compact
-    
-    - name: lint modules
-      run: |
-        for m in (ls -1d modules/*/)
-        do
-          tflint -f compact
-        done
-    
-    - name: terraform plan
-      id: plan
-      run: terraform plan -refresh=true -input=false -var-file=env/values.tfvars
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform-version: 1.0.2
+      
+      - uses: azure/login@v1
+        with: 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      - name: terraform init
+        id: init
+        working-directory: ./
+        run: terraform init -input=false
+      
+      - name: terraform fmt
+        id: fmt
+        run: terraform fmt -check
+        continue-on-error: true
+      
+      - uses: terraform-linters/setup-tflint@v1.1.0
+        with:
+          tflint_version: latest
+      
+      - name: tflint init
+        id: tflint_init
+        run: tflint --init
+      
+      - name: run tflint
+        run: tflint -f compact
+      
+      - name: lint modules
+        run: |
+          for m in (ls -1d modules/*/)
+          do
+            tflint -f compact
+          done
+      
+      - name: terraform plan
+        id: plan
+        run: terraform plan -refresh=true -input=false -var-file=env/values.tfvars
