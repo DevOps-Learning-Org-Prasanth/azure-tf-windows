@@ -21,7 +21,7 @@ module "windows" {
   password = var.password
 
   subnet = {
-    id   = module.network.subnet_id
+    name = var.subnet_space.name
     cidr = var.subnet_space.address_prefix
   }
 

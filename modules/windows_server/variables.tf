@@ -4,13 +4,13 @@ variable "location" {
 }
 
 variable "resource_group_name" {
-  type       = string
+  type        = string
   description = "name of resource group"
 }
 
 variable "subnet" {
   type = object({
-    id   = string
+    name = string
     cidr = string
   })
   description = "subnet details created in network module"

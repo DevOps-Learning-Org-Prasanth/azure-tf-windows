@@ -1,3 +1,9 @@
+data "azurerm_subnet" "main" {
+  name                = var.subnet.name
+  location            = var.location
+  resource_group_name = var.resource_group_name
+}
+
 resource "azurerm_network_interface" "main" {
   name                = "sua1-per-nic0"
   location            = var.location
@@ -5,7 +11,7 @@ resource "azurerm_network_interface" "main" {
 
   ip_configuration {
     name                          = "primary"
-    subnet_id                     = var.subnet.id
+    subnet_id                     = data.azurerm_subnet.main.id
     private_ip_address_allocation = "Static"
     private_ip_address            = cidrhost(var.subnet.cidr, 5)
   }
