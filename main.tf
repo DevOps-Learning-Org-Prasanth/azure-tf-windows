@@ -17,6 +17,9 @@ module "windows" {
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
 
+  username = var.username
+  password = var.password
+  
   subnet = {
     id   = module.network.subnet_id
     cidr = var.subnet_space.address_prefix
