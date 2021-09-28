@@ -15,9 +15,11 @@ env:
       ARM_SUBSCRIPTION_ID: ${{ secrets.SUBSCRIPTIONID }}
 
 jobs:
-  terraform-plan-on-push:
-    name: windows_server_plan
+  Create:
+    name: windows_server_apply
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.Operation == 'create' }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -35,29 +37,32 @@ jobs:
         working-directory: ./
         run: terraform init -input=false
 
-      - name: terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
+      - name: terraform apply
+        id: apply
+        run: terraform apply -input=false -var-file=./env/values.tfvars -auto-approve
+  
+  Delete:
+    name: windows_server_destroy
+    runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.Operation == 'delete' }}
 
-      - uses: terraform-linters/setup-tflint@v1.1.0
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - uses: hashicorp/setup-terraform@v1
         with:
-          tflint_version: latest
+          terraform-version: 1.0.2
 
-      - name: tflint init
-        id: tflint_init
-        run: tflint --init
+      - uses: azure/login@v1
+        with: 
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: run tflint
-        run: tflint -f compact
+      - name: terraform init
+        id: init
+        working-directory: ./
+        run: terraform init -input=false
 
-      - name: lint modules
-        run: |
-          for m in (ls -1d modules/*/)
-          do
-            tflint -f compact
-          done
-
-      - name: terraform plan
-        id: plan
-        run: terraform plan -refresh=true -input=false -var-file=env/values.tfvars
+      - name: terraform apply
+        id: apply
+        run: terraform destroy -input=false -var-file=./env/values.tfvars -auto-approve
