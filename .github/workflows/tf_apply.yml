@@ -65,4 +65,4 @@ jobs:
 
       - name: terraform apply
         id: apply
-        run: terraform destroy -input=false -var-file=./env/values.tfvars -auto-approve
+        run: terraform destroy -input=false -var-file=./env/values.tfvars -auto-approve -var "username=${{ secrets.VM_USERNAME }}" -var "password=${{secrets.VM_PASSWORD}}"
