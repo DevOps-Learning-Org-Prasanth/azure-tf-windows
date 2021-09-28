@@ -5,7 +5,7 @@ variable "location" {
 
 variable "resource_group_name" {
   type       = string
-  decription = "name of resource group"
+  description = "name of resource group"
 }
 
 variable "subnet" {
