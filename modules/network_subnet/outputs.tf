@@ -1,8 +1,8 @@
 output "subnets" {
   value = { for subnet in var.subnets :
     (subnet.name) => {
-      subnet_id   = azurerm_subnet.main[subnet.name],
-      subnet_cidr = subnet.cidr
+      id   = azurerm_subnet.main[subnet.name]
+      cidr = subnet.cidr
     }
   }
 
