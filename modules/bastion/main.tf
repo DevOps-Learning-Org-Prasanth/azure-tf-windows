@@ -6,6 +6,7 @@ resource "azurerm_public_ip" "main" {
 
   allocation_method = "Static"
   sku               = "Standard"
+  availability_zone = "No-Zone"
 }
 # bastion host
 
