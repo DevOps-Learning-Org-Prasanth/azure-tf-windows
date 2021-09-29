@@ -11,7 +11,7 @@ module "virtual_network" {
   vnet_space = var.vnet_space
 }
 
-module "subnet" {
+module "network_subnet" {
   source              = "./modules/network_subnet"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
