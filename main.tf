@@ -3,13 +3,24 @@ resource "azurerm_resource_group" "main" {
   location = var.location
 }
 
-module "network" {
-  source              = "./modules/network"
+module "virtual_network" {
+  source              = "./modules/virtual_network"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
 
-  vnet_space   = var.vnet_space
-  subnet_space = var.subnet_space
+  vnet_space = var.vnet_space
+}
+
+module "network_subnet" {
+  source              = "./modules/network_subnet"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+
+  vnet_name = var.vnet_space.name
+  subnets   = var.subnets
+  depends_on = [
+    module.virtual_network
+  ]
 }
 
 module "windows" {
@@ -20,12 +31,22 @@ module "windows" {
   username = var.username
   password = var.password
 
-  subnet = {
-    name = var.subnet_space.name
-    cidr = var.subnet_space.address_prefix
-  }
-  vnet_name = var.vnet_space.name
+  subnet_id   = module.network_subnet.subnets["win_server"].id
+  subnet_cidr = module.network_subnet.subnets["win_server"].cidr
+
   depends_on = [
-    module.network
+    module.network_subnet
+  ]
+}
+
+module "bastion" {
+  source              = "./modules/bastion"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+
+  subnet_id = module.network_subnet.subnets["bastion"].id
+
+  depends_on = [
+    module.network_subnet, module.windows
   ]
 }

@@ -8,12 +8,14 @@ variable "resource_group_name" {
   description = "name of resource group"
 }
 
-variable "subnet" {
-  type = object({
-    name = string
-    cidr = string
-  })
-  description = "subnet details created in network module"
+variable "subnet_id" {
+  type        = string
+  description = "id of the subnet created for this server"
+}
+
+variable "subnet_cidr" {
+  type        = string
+  description = "cidr of subnet created"
 }
 
 variable "username" {
@@ -26,9 +28,4 @@ variable "password" {
   type        = string
   description = "password of vm"
   sensitive   = true
-}
-
-variable "vnet_name" {
-  type        = string
-  description = "name of virtual network"
 }
