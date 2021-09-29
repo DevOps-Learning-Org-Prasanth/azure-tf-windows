@@ -11,7 +11,7 @@ subnets = [
     cidr : "10.255.44.0/24"
   },
   {
-    name : "bastion"
+    name : "AzureBastionSubnet"
     cidr : "10.255.45.0/24"
   }
 ]
