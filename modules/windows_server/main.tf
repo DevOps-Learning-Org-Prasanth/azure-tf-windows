@@ -1,24 +1,18 @@
-data "azurerm_subnet" "main" {
-  name                 = var.subnet.name
-  resource_group_name  = var.resource_group_name
-  virtual_network_name = var.vnet_name
-}
-
 resource "azurerm_network_interface" "main" {
-  name                = "sua1-per-nic0"
+  name                = local.nic_name
   location            = var.location
   resource_group_name = var.resource_group_name
 
   ip_configuration {
     name                          = "primary"
-    subnet_id                     = data.azurerm_subnet.main.id
+    subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Static"
-    private_ip_address            = cidrhost(var.subnet.cidr, 5)
+    private_ip_address            = cidrhost(var.subnet_cidr, 5)
   }
 }
 
 resource "azurerm_windows_virtual_machine" "main" {
-  name                = "sua1-per-vm0"
+  name                = local.vm_name
   location            = var.location
   resource_group_name = var.resource_group_name
   size                = "Standard_F2"

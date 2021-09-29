@@ -6,9 +6,4 @@ resource "azurerm_virtual_network" "main" {
   location            = var.location
 
   address_space = [var.vnet_space.address_space]
-
-  subnet {
-    name           = var.subnet_space.name
-    address_prefix = var.subnet_space.address_prefix
-  }
 }
