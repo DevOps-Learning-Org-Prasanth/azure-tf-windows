@@ -46,7 +46,7 @@ module "bastion" {
 
   subnet_id = module.network_subnet.subnets["bastion"].id
 
-  depends_depends_on = [
+  depends_on = [
     module.network_subnet, module.windows
   ]
 }
