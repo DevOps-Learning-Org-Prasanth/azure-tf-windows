@@ -29,8 +29,3 @@ variable "password" {
   description = "password of vm"
   sensitive   = true
 }
-
-variable "vnet_name" {
-  type        = string
-  description = "name of virtual network"
-}
