@@ -1,4 +1,4 @@
-output "subnet" {
+output "subnets" {
   value = { for subnet in var.subnets :
     (subnet.name) => {
       subnet_id   = azurerm_subnet.main[subnet.name],

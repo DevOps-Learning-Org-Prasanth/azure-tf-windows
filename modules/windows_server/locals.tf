@@ -5,6 +5,6 @@ locals {
     westeurope : "wea01"
   }
 
-  nic_name = "${location_code[var.location]}-per-nic0"
-  vm_name  = "${location_code[var.location]}-per-vm0"
+  nic_name = "${local.location_code[var.location]}-per-nic0"
+  vm_name  = "${local.location_code[var.location]}-per-vm0"
 }
