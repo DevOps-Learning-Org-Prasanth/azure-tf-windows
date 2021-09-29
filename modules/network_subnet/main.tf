@@ -3,7 +3,6 @@ resource "azurerm_subnet" "main" {
 
   name                 = each.key
   resource_group_name  = var.resource_group_name
-  location             = var.location
   virtual_network_name = var.vnet_name
 
   address_prefixes = [each.value]
