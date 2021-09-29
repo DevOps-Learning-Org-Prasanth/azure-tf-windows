@@ -1,5 +1,5 @@
 resource "azurerm_subnet" "main" {
-  for_each = { for subnet in subnets : subnet.name => subnet.cidr }
+  for_each = { for subnet in var.subnets : subnet.name => subnet.cidr }
 
   name                 = each.key
   resource_group_name  = var.resource_group_name
