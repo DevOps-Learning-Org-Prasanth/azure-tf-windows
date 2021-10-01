@@ -1,3 +1,10 @@
+resource "azurerm_public_ip" "main" {
+  name = "public-ip"
+  location = var.location
+  resource_group_name = var.resource_group_name
+  allocation_method = "Static"
+}
+
 resource "azurerm_network_interface" "main" {
   name                = local.nic_name
   location            = var.location
@@ -8,6 +15,11 @@ resource "azurerm_network_interface" "main" {
     subnet_id                     = var.subnet_id
     private_ip_address_allocation = "Static"
     private_ip_address            = cidrhost(var.subnet_cidr, 5)
+    primary = true
+  }
+  ip_configuration {
+    name = "publicip"
+    public_ip_address_id = azurerm_public_ip.main.id
   }
 }
 
