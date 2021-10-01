@@ -9,9 +9,9 @@ subnets = [
   {
     name : "win_server",
     cidr : "10.255.44.0/24"
-  },
-  {
-    name : "AzureBastionSubnet"
-    cidr : "10.255.45.0/24"
   }
+  # {
+  #   name : "AzureBastionSubnet"
+  #   cidr : "10.255.45.0/24"
+  # }
 ]

@@ -39,14 +39,14 @@ module "windows" {
   ]
 }
 
-module "bastion" {
-  source              = "./modules/bastion"
-  resource_group_name = azurerm_resource_group.main.name
-  location            = azurerm_resource_group.main.location
-
-  subnet_id = module.network_subnet.subnets["AzureBastionSubnet"].id
-
-  depends_on = [
-    module.network_subnet, module.windows
-  ]
-}
+# module "bastion" {
+# source              = "./modules/bastion"
+# resource_group_name = azurerm_resource_group.main.name
+# location            = azurerm_resource_group.main.location
+# 
+# subnet_id = module.network_subnet.subnets["AzureBastionSubnet"].id
+# 
+# depends_on = [
+# module.network_subnet, module.windows
+# ]
+# }

@@ -5,5 +5,5 @@
 - [x] vnet
 - [x] subnet
 - [x] vm
-- [] public ip for vm
-- [] extension to install chocolatey and firefox or only firefox
+- [x] public ip for vm
+- [x] extension to install chocolatey and firefox or only firefox
