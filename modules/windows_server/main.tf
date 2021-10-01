@@ -16,9 +16,6 @@ resource "azurerm_network_interface" "main" {
     private_ip_address_allocation = "Static"
     private_ip_address            = cidrhost(var.subnet_cidr, 5)
     primary = true
-  }
-  ip_configuration {
-    name = "publicip"
     public_ip_address_id = azurerm_public_ip.main.id
   }
 }
