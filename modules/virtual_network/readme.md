@@ -1,4 +1,0 @@
-# Network
-
-## Resources created
-- vnet

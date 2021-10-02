@@ -43,6 +43,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   }
 }
 
+
 resource "azurerm_virtual_machine_extension" "install_firefox" {
   name                 = "InstallFireFox"
   virtual_machine_id   = azurerm_windows_virtual_machine.main.id
@@ -51,7 +52,7 @@ resource "azurerm_virtual_machine_extension" "install_firefox" {
   type_handler_version = "2.0"
   settings             = <<SETTINGS
                      {
-                        "commandToExecute": "powershell.exe ${local.install_script}"
+                        "commandToExecute": "powershell.exe Set-Content -path "c:/firefox.ps1" -value ${local.install_script};exit 0 "
                      }        
               SETTINGS
 }

@@ -23,6 +23,17 @@ module "network_subnet" {
   ]
 }
 
+module "firewall" {
+  source = "./modules/firewall"
+  resource_group_name = azurerm_resource_group.main.name
+  location            = azurerm_resource_group.main.location
+
+  subnet_id = module.network_subnet.subnets["win_server"].id
+  depends_on = [
+    module.network_subnet
+  ]
+}
+
 module "windows" {
   source              = "./modules/windows_server"
   resource_group_name = azurerm_resource_group.main.name
@@ -35,7 +46,7 @@ module "windows" {
   subnet_cidr = module.network_subnet.subnets["win_server"].cidr
 
   depends_on = [
-    module.network_subnet
+    module.firewall
   ]
 }
 
