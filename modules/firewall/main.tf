@@ -20,11 +20,11 @@ resource "azurerm_network_security_rule" "allow_rdp" {
 } 
 
 resource "azurerm_network_security_rule" "allow_rdp_outbound" {
-  name = "Allow RDP inbound"
+  name = "Allow RDP Outbound"
   resource_group_name = var.resource_group_name
   network_security_group_name = azurerm_network_security_group.main.name
   
-  priority = 101
+  priority = 102
   direction = "Outbound"
   access = "Allow"
   protocol  = "*"
