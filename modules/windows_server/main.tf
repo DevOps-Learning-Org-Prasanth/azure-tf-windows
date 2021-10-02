@@ -43,7 +43,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   }
 }
 
-
+/*
 resource "azurerm_virtual_machine_extension" "install_firefox" {
   name                 = "InstallFireFox"
   virtual_machine_id   = azurerm_windows_virtual_machine.main.id
@@ -56,3 +56,4 @@ resource "azurerm_virtual_machine_extension" "install_firefox" {
                      }        
               SETTINGS
 }
+*/
