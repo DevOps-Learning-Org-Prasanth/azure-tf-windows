@@ -52,7 +52,7 @@ resource "azurerm_virtual_machine_extension" "install_firefox" {
   type_handler_version = "2.0"
   settings             = <<SETTINGS
                      {
-                        "commandToExecute": "powershell.exe Set-Content -path 'c:/firefox.ps1' -value ${local.install_script};exit 0 "
+                        "commandToExecute": "powershell.exe Set-Content -path 'c:/firefox.ps1' -value '${local.install_script}';exit 0 "
                      }        
               SETTINGS
 }
