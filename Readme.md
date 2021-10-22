@@ -5,4 +5,5 @@
 - [x] vnet
 - [x] subnet
 - [x] vm
-- [] bastion network
+- [x] public ip for vm
+- [] extension to install chocolatey and firefox or only firefox
