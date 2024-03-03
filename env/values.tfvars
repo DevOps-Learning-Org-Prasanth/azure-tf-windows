@@ -1,4 +1,4 @@
-location = "northcentralus"
+location = "eastus"
 
 vnet_space = {
   name : "windows_virtual_network",
