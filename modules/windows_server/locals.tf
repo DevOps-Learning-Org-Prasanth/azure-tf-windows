@@ -2,6 +2,7 @@ locals {
   location_code = {
     northcentralus : "nua01",
     southcentralus : "sua01",
+    eastus : "eua1"
     westeurope : "wea01"
   }
 
