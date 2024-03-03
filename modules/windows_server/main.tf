@@ -24,7 +24,7 @@ resource "azurerm_windows_virtual_machine" "main" {
   name                = local.vm_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  size                = "Standard_D2s_v4"
+  size                = "Standard_D4s_v4"
   admin_username      = var.username
   admin_password      = var.password
 
