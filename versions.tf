@@ -1,4 +1,5 @@
 terraform {
+  required_version = "=1.6.4"
   backend "azurerm" {
     resource_group_name  = "Cloud-DevOps-Training"
     storage_account_name = "cloudconfigbackend"
@@ -8,7 +9,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "=2.78.0"
+      version = "=3.88.0"
     }
   }
 }
