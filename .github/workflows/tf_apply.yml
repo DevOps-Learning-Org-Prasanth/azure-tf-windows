@@ -26,11 +26,7 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v1
         with:
-          terraform_version: 1.0.2
-
-      - uses: azure/login@v1
-        with: 
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          terraform_version: 1.6.4
 
       - name: terraform init
         id: init
