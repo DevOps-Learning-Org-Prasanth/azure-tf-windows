@@ -31,8 +31,9 @@ resource "azurerm_windows_virtual_machine" "main" {
   network_interface_ids = [azurerm_network_interface.main.id]
 
   os_disk {
-    caching              = "ReadWrite"
+    caching              = "None"
     storage_account_type = "Standard_LRS"
+    disk_size_gb = 64
   }
 
   source_image_reference {
